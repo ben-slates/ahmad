@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmed | Nature & Cinematic Photographer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0a0c0b;
+            --bg-accent: #121614;
+            --bg-light: #1a1d1b;
+            --text-primary: #f4f7f5;
+            --text-secondary: #a0a8a3;
+            --accent: #4a5d4e;
+            --accent-hover: #5d7562;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .playfair {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: var(--transition);
+            background: rgba(10, 12, 11, 0);
+            backdrop-filter: blur(0px);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 12, 11, 0.92);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(74, 93, 78, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            background: linear-gradient(135deg, #f4f7f5, #a0a8a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=2070') no-repeat center center/cover;
+            z-index: -2;
+            transform: scale(1);
+            animation: slowZoom 25s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.12); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,12,11,0.3) 0%, rgba(10,12,11,0.95) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.3s forwards 0.4s;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.3s forwards 0.7s;
+            font-weight: 300;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            animation: fadeInUp 1.3s forwards 1s;
+        }
+
+        .mouse {
+            width: 22px;
+            height: 38px;
+            border: 1.5px solid var(--text-secondary);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .mouse::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2.5px;
+            height: 7px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            animation: mouseScroll 2.2s infinite;
+        }
+
+        @keyframes mouseScroll {
+            0% { opacity: 0; top: 6px; }
+            50% { opacity: 1; }
+            100% { opacity: 0; top: 18px; }
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 140px 0;
+        }
+
+        .section-header {
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .section-header span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            .section-header {
+                margin-bottom: 60px;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* --- Masonry Gallery --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            width: 100%;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            aspect-ratio: 1 / 1;
+        }
+
+        .portfolio-item.hidden {
+            display: none;
+        }
+
+        .portfolio-item:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 45px;
+            background: linear-gradient(to top, rgba(10,12,11,0.95), rgba(10,12,11,0.5) 60%, transparent);
+            opacity: 0;
+            transition: var(--transition);
+            transform: translateY(30px);
+        }
+
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .portfolio-info p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        /* --- Load More Button --- */
+        .load-more-container {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-load-more {
+            display: inline-block;
+            padding: 18px 60px;
+            border: 1.5px solid var(--text-primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            transition: var(--transition-fast);
+            background: rgba(244, 247, 245, 0.05);
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-load-more::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 247, 245, 0.1);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .btn-load-more:hover::before {
+            left: 0;
+        }
+
+        .btn-load-more:hover {
+            background: rgba(244, 247, 245, 0.15);
+            border-color: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-load-more.loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* --- About Section --- */
+        .about {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-light) 100%);
+        }
+
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 650px;
+            object-fit: cover;
+            filter: grayscale(0.4);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0.2);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(74, 93, 78, 0.5);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1.2;
+        }
+
+        .about-text span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .about-text h2 {
+            font-size: 3.8rem;
+            margin-bottom: 40px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            max-width: 650px;
+            line-height: 1.8;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            padding: 16px 45px;
+            border: 1.5px solid var(--text-primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            transition: var(--transition-fast);
+            background: rgba(244, 247, 245, 0.05);
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 247, 245, 0.1);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .btn-premium:hover::before {
+            left: 0;
+        }
+
+        .btn-premium:hover {
+            background: rgba(244, 247, 245, 0.15);
+            border-color: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .about-flex {
+                flex-direction: column;
+                gap: 60px;
+            }
+            .about-image {
+                width: 100%;
+            }
+            .about-text h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* --- Services --- */
+        .services {
+            background: var(--bg-dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 70px 50px;
+            border: 1px solid rgba(74, 93, 78, 0.3);
+            transition: var(--transition);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 93, 78, 0.1);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-15px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(74, 93, 78, 0.2);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card i {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 35px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.15);
+            color: var(--accent-hover);
+        }
+
+        .service-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .service-card {
+                padding: 50px 35px;
+            }
+        }
+
+        /* --- Contact --- */
+        .contact {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-accent) 100%);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 4.2rem;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .contact-btn {
+            padding: 18px 50px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .contact-btn:hover::before {
+            left: 0;
+        }
+
+        .whatsapp-btn {
+            background: rgba(37, 211, 102, 0.15);
+            border: 1.5px solid rgba(37, 211, 102, 0.4);
+            color: #25D366;
+            backdrop-filter: blur(10px);
+        }
+
+        .whatsapp-btn::before {
+            background: rgba(37, 211, 102, 0.25);
+        }
+
+        .whatsapp-btn:hover {
+            background: rgba(37, 211, 102, 0.3);
+            border-color: #25D366;
+            color: #25D366;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.2);
+        }
+
+        .insta-btn {
+            background: rgba(224, 109, 175, 0.15);
+            border: 1.5px solid rgba(224, 109, 175, 0.4);
+            color: #e06daf;
+            backdrop-filter: blur(10px);
+        }
+
+        .insta-btn::before {
+            background: rgba(224, 109, 175, 0.25);
+        }
+
+        .insta-btn:hover {
+            background: rgba(224, 109, 175, 0.3);
+            border-color: #e06daf;
+            color: #e06daf;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(224, 109, 175, 0.2);
+        }
+
+        .contact-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            transition: var(--transition-fast);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-hover);
+        }
+
+        @media (max-width: 768px) {
+            .contact-content h2 {
+                font-size: 2.5rem;
+            }
+            .contact-links {
+                gap: 20px;
+            }
+            .contact-btn {
+                padding: 16px 35px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 0 50px;
+            border-top: 1px solid rgba(74, 93, 78, 0.3);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 25px;
+            justify-content: flex-end;
+        }
+
+        .footer-social a {
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            font-size: 1rem;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(74, 93, 78, 0.2);
+            margin: 30px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 60px 0 40px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-left, .footer-right {
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        /* --- Scrollbar Styling --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(74, 93, 78, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(74, 93, 78, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">M. Ahmed</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p>Cinematic Nature Photography</p>
+            <h1>Muhammad Ahmed</h1>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span>The Gallery</span>
+                <h2>Selected Works</h2>
+            </div>
+            
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items will be dynamically loaded here -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn-load-more" id="loadMoreBtn">Load More Works</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-flex">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="https://8000-ifn4fwm0iwt1c1yzgyeo9-693949a8.us3.manus.computer/upload/pasted_file_CLwPhE_image.png" alt="Muhammad Ahmed">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <span>The Artist</span>
+                    <h2>Capturing the soul of the wilderness.</h2>
+                    <p>Based in Pakistan, I am a nature photographer dedicated to documenting the raw, untouched beauty of our planet. My work focuses on the intersection of light, shadow, and the cinematic scale of the natural world.</p>
+                    <p>Every frame is a story of a moment that will never happen again. From the highest peaks of the Karakoram to the dense jungles of the south, I seek the quiet majesty of the wild. My photography is an ode to nature's timeless elegance.</p>
+                    <a href="#contact" class="btn-premium">Work with me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span>Offerings</span>
+                <h2>Photography Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <h3>Landscape Fine Art</h3>
+                    <p>High-resolution landscape captures for commercial use, interior design, and gallery exhibitions. Premium prints and digital licensing available.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-paw"></i>
+                    <h3>Wildlife Documentaries</h3>
+                    <p>Specialized wildlife photography focusing on animal behavior and cinematic environmental portraits. Perfect for editorial and conservation projects.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-camera-retro"></i>
+                    <h3>Workshops & Tours</h3>
+                    <p>Join me on guided photography expeditions to the most breathtaking locations. Learn advanced techniques while capturing unforgettable moments.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-film"></i>
+                    <h3>Cinematic Storytelling</h3>
+                    <p>Cinematic video production and timelapse sequences. Perfect for brands, documentaries, and creative projects seeking visual excellence.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fa-solid fa-palette"></i>
+                    <h3>Post-Production & Editing</h3>
+                    <p>Professional color grading, retouching, and editing services. Ensuring every image meets the highest standards of quality and aesthetics.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fa-solid fa-book"></i>
+                    <h3>Portfolio Consultation</h3>
+                    <p>Expert guidance on building and curating your photography portfolio. Personalized feedback and strategic direction for your creative journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-header" data-aos="fade-up">
+                    <span>Get in touch</span>
+                    <h2>Let's create something timeless.</h2>
+                </div>
+                <div class="contact-links" data-aos="fade-up">
+                    <a href="https://wa.me/923347645142" target="_blank" class="btn-premium contact-btn whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/ahmad_8.5" target="_blank" class="btn-premium contact-btn insta-btn">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                </div>
+                <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                    <p>Direct: <a href="tel:+923347645142">+92 334 7645142</a></p>
+                    <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">Available for commissions, collaborations, and expeditions worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px;">Muhammad Ahmed</p>
+                    <p>Nature & Cinematic Photographer</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-social">
+                        <a href="https://instagram.com/ahmad_8.5" target="_blank" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/923347645142" target="_blank" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Muhammad Ahmed Photography. All rights reserved.</p>
+                <p style="font-size: 0.65rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px;">Crafted for Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Portfolio data with UAF square images (1:1 aspect ratio)
+        const portfolioData = [
+            // Initial batch (6 items) - UAF Campus
+            {
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'UAF Main Campus',
+                category: 'Faisalabad, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Heritage Architecture',
+                category: 'University, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Grounds',
+                category: 'Landscape, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Academic Excellence',
+                category: 'Education, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Serenity',
+                category: 'Nature, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Golden Hour',
+                category: 'Cinematic, 2024'
+            },
+            // Second batch (6 items) - More UAF
+            {
+                image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Courtyard Beauty',
+                category: 'Architecture, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Life',
+                category: 'Faisalabad, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'University Grounds',
+                category: 'Landscape, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Architectural Gem',
+                category: 'Heritage, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Pathways',
+                category: 'Exploration, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Timeless Beauty',
+                category: 'Landscape, 2024'
+            },
+            // Third batch (6 items) - Nature & UAF blend
+            {
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Green Campus',
+                category: 'Nature, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Tranquility',
+                category: 'Cinematic, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Misty Mornings',
+                category: 'Faisalabad, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Academic Halls',
+                category: 'Architecture, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Sunset at UAF',
+                category: 'Landscape, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Heritage Pride',
+                category: 'University, 2024'
+            },
+            // Fourth batch (6 items)
+            {
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Majesty',
+                category: 'Landscape, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Architectural Wonder',
+                category: 'Heritage, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Campus Elegance',
+                category: 'Nature, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Educational Hub',
+                category: 'Faisalabad, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Natural Splendor',
+                category: 'Cinematic, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Timeless Moments',
+                category: 'Photography, 2024'
+            }
+        ];
+
+        let currentIndex = 0;
+        const itemsPerPage = 6;
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+        // Function to create portfolio item HTML
+        function createPortfolioItem(item, index) {
+            const div = document.createElement('div');
+            div.className = 'portfolio-item';
+            div.setAttribute('data-aos', 'fade-up');
+            div.style.animationDelay = `${(index % itemsPerPage) * 0.1}s`;
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.title}">
+                <div class="portfolio-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.category}</p>
+                </div>
+            `;
+            return div;
+        }
+
+        // Function to load more items
+        function loadMore() {
+            const endIndex = Math.min(currentIndex + itemsPerPage, portfolioData.length);
+            
+            for (let i = currentIndex; i < endIndex; i++) {
+                const item = createPortfolioItem(portfolioData[i], i);
+                portfolioGrid.appendChild(item);
+                
+                // Trigger AOS animation
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                }, 10);
+            }
+
+            currentIndex = endIndex;
+
+            // Hide button if all items are loaded
+            if (currentIndex >= portfolioData.length) {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            // Refresh AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        }
+
+        // Load initial items
+        loadMore();
+
+        // Load more button click handler
+        loadMoreBtn.addEventListener('click', function() {
+            this.classList.add('loading');
+            setTimeout(() => {
+                loadMore();
+                this.classList.remove('loading');
+            }, 300);
+        });
+
+        // Initialize Scroll Animations
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1200,
+                once: true,
+                offset: 100,
+                easing: 'ease-in-out-cubic'
+            });
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Smooth Scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-bg');
+            if (hero) {
+                hero.style.transform = `scale(${1 + window.scrollY * 0.0001})`;
+            }
+        });
+    </script>
+</body>
+</html>
