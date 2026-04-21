@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon.png">
     <title>Muhammad Ahmed | Nature & Cinematic Photographer</title>
     
     <!-- Fonts -->
@@ -461,10 +462,10 @@
 
         .about-image img {
             width: 100%;
-            height: 650px;
-            object-fit: cover;
+            height: 700px;
+            object-fit: full;
             filter: grayscale(0.4);
-            border-radius: 12px;
+            border-radius: 14px;
             transition: var(--transition);
         }
 
@@ -927,7 +928,7 @@
         <div class="container">
             <div class="about-flex">
                 <div class="about-image" data-aos="fade-right">
-                    <img src="https://8000-ifn4fwm0iwt1c1yzgyeo9-693949a8.us3.manus.computer/upload/pasted_file_CLwPhE_image.png" alt="Muhammad Ahmed">
+                    <img src="ahmed.jpeg" alt="Muhammad Ahmed">
                 </div>
                 <div class="about-text" data-aos="fade-left">
                     <span>The Artist</span>
@@ -1038,134 +1039,134 @@
     <script>
         // Portfolio data with UAF square images (1:1 aspect ratio)
         const portfolioData = [
-            // Initial batch (6 items) - UAF Campus
+            // Initial batch (8 items)
             {
                 image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'UAF Main Campus',
-                category: 'Faisalabad, 2024'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Heritage Architecture',
-                category: 'University, 2024'
-            },
-            {
-                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Grounds',
+                title: 'Mountain Majesty',
                 category: 'Landscape, 2024'
             },
             {
+                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Architectural Grace',
+                category: 'Architecture, 2024'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
+                title: 'Alpine Serenity',
+                category: 'Nature, 2024'
+            },
+            {
                 image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Academic Excellence',
-                category: 'Education, 2024'
+                title: 'Golden Fields',
+                category: 'Landscape, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Serenity',
+                title: 'Horizon Glow',
                 category: 'Nature, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Golden Hour',
+                title: 'Sunset Symphony',
                 category: 'Cinematic, 2024'
             },
-            // Second batch (6 items) - More UAF
             {
                 image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Courtyard Beauty',
+                title: 'Timeless Passages',
                 category: 'Architecture, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Life',
-                category: 'Faisalabad, 2024'
+                title: 'Interior Perspectives',
+                category: 'Fine Art, 2024'
             },
+            // Second batch (6 items)
             {
                 image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'University Grounds',
+                title: 'Coastal Dreams',
                 category: 'Landscape, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Architectural Gem',
-                category: 'Heritage, 2024'
+                title: 'Peak Performance',
+                category: 'Nature, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Pathways',
-                category: 'Exploration, 2024'
+                title: 'Structural Beauty',
+                category: 'Architecture, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Timeless Beauty',
+                title: 'Wilderness Echo',
                 category: 'Landscape, 2024'
             },
-            // Third batch (6 items) - Nature & UAF blend
+            // Third batch (6 items)
             {
                 image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Green Campus',
+                title: 'Field of Light',
                 category: 'Nature, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Tranquility',
+                title: 'Dawn Awakening',
                 category: 'Cinematic, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Misty Mornings',
-                category: 'Faisalabad, 2024'
+                title: 'Twilight Hues',
+                category: 'Photography, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Academic Halls',
+                title: 'Form and Shadow',
                 category: 'Architecture, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Sunset at UAF',
-                category: 'Landscape, 2024'
+                title: 'Spatial Composition',
+                category: 'Fine Art, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Heritage Pride',
-                category: 'University, 2024'
+                title: 'Ocean Reflections',
+                category: 'Landscape, 2024'
             },
             // Fourth batch (6 items)
             {
                 image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Majesty',
+                title: 'Vertical Splendor',
                 category: 'Landscape, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Architectural Wonder',
-                category: 'Heritage, 2024'
+                title: 'Monumental Lines',
+                category: 'Architecture, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Campus Elegance',
-                category: 'Nature, 2024'
+                title: 'Untamed Nature',
+                category: 'Fine Art, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Educational Hub',
-                category: 'Faisalabad, 2024'
+                title: 'Terrestrial Canvas',
+                category: 'Landscape, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Natural Splendor',
+                title: 'Luminous Landscape',
                 category: 'Cinematic, 2024'
             },
             {
                 image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800&h=800',
-                title: 'Timeless Moments',
+                title: 'Ephemeral Moment',
                 category: 'Photography, 2024'
             }
         ];
 
         let currentIndex = 0;
-        const itemsPerPage = 6;
+        const itemsPerPage = 8;
         const portfolioGrid = document.getElementById('portfolioGrid');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
 
